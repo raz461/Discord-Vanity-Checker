@@ -1,0 +1,10 @@
+{
+    "proxy" : {
+        "enable" : true
+    },
+    "saves" : {
+        "enable" : true,
+        "valids" : true,
+        "invalids" : true
+    }
+}
