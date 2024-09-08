@@ -9,8 +9,8 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
     const chalk = (await import('chalk')).default;
 
     const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
-    const proxies = fs.readFileSync('proxies.txt', 'utf8').split('\n').map(line => line.trim());
-    const vanities = fs.readFileSync('vanity.txt', 'utf8').split(/\r?\n/);
+    const proxies = fs.readFileSync('data/proxies.txt', 'utf8').split('\n').map(line => line.trim());
+    const vanities = fs.readFileSync('data/vanity.txt', 'utf8').split(/\r?\n/);
 
     const getTimeStamp = () => moment().format('HH:mm:ss');
 
@@ -36,13 +36,13 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
             logMessage(`${vanity} | Invalid`);
             if (config.saves.enable && config.saves.invalids) {
-                fs.appendFileSync('Invalids.txt', `${vanity}\n`);
+                fs.appendFileSync('data/Invalids.txt', `${vanity}\n`);
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.code === 10006) {
                 logMessage(`${vanity} | Valid`);
                 if (config.saves.enable && config.saves.valids) {
-                    fs.appendFileSync('Valids.txt', `${vanity}\n`);
+                    fs.appendFileSync('data/Valids.txt', `${vanity}\n`);
                 }
             } else {
                 logMessage(`Error checking vanity ${vanity}: ${error.response ? error.response.data : error.message}`);
