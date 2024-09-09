@@ -14,6 +14,9 @@ Using the discord api to check if a vanity url is available to use or is already
 ## Config
 ```json
 {
+    "checker": {
+        "delay": 1000 // Delay in ms between each check (1000ms = 1s)
+    },
     "proxy" : {
         "enable" : true // If you want to use a proxy
     },
