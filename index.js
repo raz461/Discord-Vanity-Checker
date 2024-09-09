@@ -28,19 +28,19 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
     const checkVanity = async (vanity) => {
         try {
-            await sleep(1000);
+            await sleep(config.checker.delay);
             const response = await axios.get(`https://canary.discord.com/api/v10/invites/${vanity}`, {
                 httpAgent: proxyAgent,
                 httpsAgent: proxyAgent
             });
 
-            logMessage(`${vanity} | Invalid`);
+            logMessage(`${chalk.blue(vanity)} | ${chalk.red('Invalid')}`);
             if (config.saves.enable && config.saves.invalids) {
                 fs.appendFileSync('data/Invalids.txt', `${vanity}\n`);
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.code === 10006) {
-                logMessage(`${vanity} | Valid`);
+                logMessage(`${chalk.blue(vanity)} | ${chalk.green('Valid')}`);
                 if (config.saves.enable && config.saves.valids) {
                     fs.appendFileSync('data/Valids.txt', `${vanity}\n`);
                 }

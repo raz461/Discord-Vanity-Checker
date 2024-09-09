@@ -1,4 +1,7 @@
 {
+    "checker": {
+        "delay": 1000
+    },
     "proxy" : {
         "enable" : true
     },

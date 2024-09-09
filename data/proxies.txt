@@ -1,0 +1,3 @@
+Your proxies here
+
+username:password@ip:port

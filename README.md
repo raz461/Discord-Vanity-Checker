@@ -9,6 +9,7 @@ Using the discord api to check if a vanity url is available to use or is already
 
 ## Misc
 - You can change the delay on the line `31` in the `index.js` file.
+- Proxy format: `username:password@ip:port`
 
 ## Config
 ```json
